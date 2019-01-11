@@ -4,7 +4,7 @@
   "description": "React1.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx babel src --out-dir dist/src && npx webpack"
   },
   "repository": {
     "type": "git",

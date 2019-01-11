@@ -16,9 +16,11 @@ require("core-js/modules/es6.symbol");
 
 require("core-js/modules/web.dom.iterable");
 
-var _sponsors = require("./sponsors");
+var _sponsors = _interopRequireDefault(require("./sponsors"));
 
-var _employers = require("./employers");
+var _employers = _interopRequireDefault(require("./employers"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -40,6 +42,15 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var data = {
+  employers: ['Alex', '', 'ludmila', 'Viktor', '', 'oleg', 'iNna', 'Ivan', 'Alex', 'Olga', ' Ann'],
+  sponsors: {
+    cash: [40000, 5000, 30400, 12000],
+    eu: ['SRL', 'PLO', 'J&K'],
+    rus: ['RusAuto', 'SBO']
+  }
+};
+
 var makeBusiness =
 /*#__PURE__*/
 function () {
@@ -50,7 +61,10 @@ function () {
 
     _classCallCheck(this, makeBusiness);
 
-    this.owner, this.director, this.cash, this.emp;
+    this.owner = owner;
+    this.director = director;
+    this.cash = cash;
+    this.emp = emp;
   }
 
   _createClass(makeBusiness, [{
@@ -60,14 +74,23 @@ function () {
           director = this.director,
           cash = this.cash,
           emp = this.emp;
-      var sumSponsors = [].concat(_toConsumableArray(_sponsors.eu), _toConsumableArray(_sponsors.rus), ['unexpected sponsor']);
-      console.log("We have a business. Owner: ".concat(owner, ", director: ").concat(director, ". Our budget: ").concat(cash, ". And our employers: ").concat(emp, " \nAnd we have a sponsors: \n").concat(sumSponsors.join(' '), " \nNote. Be careful with ").concat(_sponsors.eu[0], ". It's a huge risk."));
+      var sumSponsors = [].concat(_toConsumableArray(eu), _toConsumableArray(rus), ['unexpected sponsor']);
+      console.log("We have a business. Owner: ".concat(owner, ", director: ").concat(director, ". Our budget: ").concat(cash, ". And our employers: ").concat(emp, " \nAnd we have a sponsors: \n").concat(sumSponsors.join(' '), " \nNote. Be careful with ").concat(eu[0], ". It's a huge risk."));
     }
   }]);
 
   return makeBusiness;
 }();
 
-var businiess = _construct(makeBusiness, ['Sam',, _sponsors.money, _employers.employersNames]);
+var employers = data.employers,
+    _data$sponsors = data.sponsors,
+    cash = _data$sponsors.cash,
+    eu = _data$sponsors.eu,
+    rus = _data$sponsors.rus;
+var employer = new _employers.default(employers);
+var employersNames = employer.getNames();
+var money = new _sponsors.default(null, cash);
+
+var businiess = _construct(makeBusiness, ['Sam',, money.calcCash(), employersNames]);
 
 businiess.getInfo();

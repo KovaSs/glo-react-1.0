@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.money = exports.calcCash = exports.rus = exports.eu = exports.cash = exports.sponsors = void 0;
+exports.default = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -19,37 +19,55 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var sponsors = {
-  cash: [40000, 5000, 30400, 12000],
-  eu: ['SRL', 'PLO', 'J&K'],
-  rus: ['RusAuto', 'SBO']
-};
-exports.sponsors = sponsors;
-var cash = sponsors.cash,
-    eu = sponsors.eu,
-    rus = sponsors.rus;
-exports.rus = rus;
-exports.eu = eu;
-exports.cash = cash;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var calcCash = function calcCash() {
-  var own = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-  for (var _len = arguments.length, everyCash = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    everyCash[_key - 1] = arguments[_key];
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// export const {cash, eu, rus} = sponsors
+var Sponsors =
+/*#__PURE__*/
+function () {
+  function Sponsors() {
+    var own = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+    _classCallCheck(this, Sponsors);
+
+    this.own = own;
+
+    for (var _len = arguments.length, everyCash = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      everyCash[_key - 1] = arguments[_key];
+    }
+
+    this.everyCash = everyCash;
   }
 
-  var _everyCash = everyCash;
+  _createClass(Sponsors, [{
+    key: "calcCash",
+    value: function calcCash() {
+      var everyCash = this.everyCash,
+          own = this.own;
+      var _everyCash = everyCash;
 
-  var _everyCash2 = _slicedToArray(_everyCash, 1);
+      var _everyCash2 = _slicedToArray(_everyCash, 1);
 
-  everyCash = _everyCash2[0];
-  var total = everyCash.reduce(function (total, current) {
-    return total + current;
-  }, +own);
-  return total;
-};
+      everyCash = _everyCash2[0];
+      var total = everyCash.reduce(function (total, current) {
+        return total + current;
+      }, +own);
+      return total;
+    }
+  }, {
+    key: "getMoney",
+    value: function getMoney(cash) {
+      return calcCash(null, cash);
+    }
+  }]);
 
-exports.calcCash = calcCash;
-var money = calcCash(null, cash);
-exports.money = money;
+  return Sponsors;
+}();
+
+var _default = Sponsors; // export const money = calcCash(null, cash);
+
+exports.default = _default;

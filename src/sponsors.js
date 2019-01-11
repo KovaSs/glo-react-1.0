@@ -1,16 +1,18 @@
 // export const {cash, eu, rus} = sponsors
 
 class Sponsors {
-  constructor(sponsors, own = 0, ...everyCash){
-    this.sponsors
-    this.own 
-    this.everyCash
+  constructor(own = 0, ...everyCash){
+    this.own = own
+    this.everyCash = everyCash
   }
-  calcCash () {
-    const {everyCash, own} = this
+  calcCash() {
+    let {everyCash, own} = this;
     [everyCash] = everyCash;
-    const total = everyCash.reduce((total, current) => {return total + current},  + own);
+    let total = everyCash.reduce((total, current) => {return total + current},  + own);
     return total;
+  }
+  getMoney(cash) {
+    return calcCash(null, cash);
   }
 }
 

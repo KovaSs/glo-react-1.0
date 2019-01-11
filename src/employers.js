@@ -1,12 +1,14 @@
 
 class Employers {
-  constructor(employer){
-    this.employer
+  constructor(emp){
+    this.emp = emp
   }
   getNames(){
-    this.employer.filter( el => {
+    let {emp} = this
+    emp = emp.filter( el => {
       return el != ''
     }).map(el => el.toLowerCase().trim());
+    return emp
   }
 }
 
