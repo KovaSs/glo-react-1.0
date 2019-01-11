@@ -1,6 +1,14 @@
 
-export const 	employers = ['Alex', '', 'ludmila', 'Viktor', '', 'oleg', 'iNna', 'Ivan', 'Alex', 'Olga', ' Ann'];
-export const employersNames = employers.filter( el => {
-	return el != ''
-}).map(el => el.toLowerCase().trim());
+class Employers {
+  constructor(employer){
+    this.employer
+  }
+  getNames(){
+    this.employer.filter( el => {
+      return el != ''
+    }).map(el => el.toLowerCase().trim());
+  }
+}
+
+export default Employers
 
