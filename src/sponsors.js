@@ -4,7 +4,7 @@ export const sponsors = {
   rus: ['RusAuto', 'SBO']
 }
 
-const {cash} = sponsors
+export const {cash, eu, rus} = sponsors
 
 export const calcCash = (own = 0, ...everyCash) => {
 	[everyCash] = everyCash;
