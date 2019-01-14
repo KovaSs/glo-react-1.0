@@ -12,10 +12,10 @@ const PostListItem = () => {
         Hello World!
       </span>
       <div className="d-flex justify-content-center align-items-center">
-        <span className="date">
-          <span className="month">{month}</span>
-          <span className="day">{day}</span>
-        </span>
+        <>
+          <span>{month}</span>
+          <span>{day}</span>
+        </>
         <button 
           type="button"
           className="btn-star btn-sm"
