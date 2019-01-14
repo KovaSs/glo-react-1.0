@@ -7,16 +7,37 @@ import PostAddForm from '../PostAddForm'
 
 import "./App.css"
 
-const App = () => (
-  <div className="app">
-    <AppHeader/>
-    <div className="d-flex search-panel">
-      <SearchPanel/>
-      <PostStatusFilter/>
+const App = () => {
+
+  const data = [
+    {
+      label: "Going to learn React",
+      important: true,
+      id: 'new-post-1'
+    },
+    {
+      label: "That is so good!",
+      important: false,
+      id: 'new-post-2'
+    },
+    {
+      label: "I need a break...",
+      important: false,
+      id: 'new-post-3'
+    },
+  ];
+
+  return (
+    <div className="app">
+      <AppHeader/>
+      <div className="d-flex search-panel">
+        <SearchPanel/>
+        <PostStatusFilter/>
+      </div>
+      <PostList posts={data}/>
+      <PostAddForm/>
     </div>
-    <PostList/>
-    <PostAddForm/>
-  </div>
-)
+  )
+}
 
 export default App
