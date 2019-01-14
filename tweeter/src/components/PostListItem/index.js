@@ -24,6 +24,7 @@ class PostListItem extends Component{
 
     const {label} = this.props;
     const {important, like} = this.state;
+    const [day, month] = new Date().toLocaleDateString("ru",{month:"2-digit", day:"numeric"}).split(' ');
 
     let classNames="app-list-item d-flex justify-content-between"
     if(important){
@@ -42,6 +43,10 @@ class PostListItem extends Component{
           {label}
         </span>
         <div className="d-flex justify-content-center align-items-center">
+        <>
+          <span>{day}</span>
+          <span>{month}</span>
+        </>
           <button 
             type="button"
             className="btn-star btn-sm"
