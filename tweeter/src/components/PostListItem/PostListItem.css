@@ -24,6 +24,18 @@
 	color: red;
 }
 
+.app-list-item .btn-edit {
+	color: green;
+	opacity: 0;
+	display: none;
+}
+
+.app-list-item.edit:hover .btn-edit {
+	display: block;
+	transition: 0.5s all;
+	opacity: 1;
+}
+
 .app-list-item .fa-heart {
 	width: 35px;
 	height: 35px;
