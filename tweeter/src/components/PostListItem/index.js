@@ -3,12 +3,19 @@ import React from 'react'
 import "./PostListItem.css"
 
 const PostListItem = () => {
+
+  const [day, month] = new Date().toLocaleDateString("ru",{month:"2-digit", day:"numeric"}).split(' ');
+
   return (
     <li className="app-list-item d-flex justify-content-between">
       <span className="app-list-item-label">
         Hello World!
       </span>
       <div className="d-flex justify-content-center align-items-center">
+        <span className="date">
+          <span className="month">{month}</span>
+          <span className="day">{day}</span>
+        </span>
         <button 
           type="button"
           className="btn-star btn-sm"
