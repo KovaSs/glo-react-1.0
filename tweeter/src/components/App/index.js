@@ -10,6 +10,11 @@ import "./App.css"
 const App = () => {
 
   const data = [
+    `string`,
+    5,
+    null,
+    true,
+    [],
     {
       label: "Going to learn React",
       important: true,

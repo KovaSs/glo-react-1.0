@@ -6,12 +6,15 @@ import "./PostList.css"
 const PostList = ({posts}) => {
   
   const elements = posts.map( item => {
-    const {id, ...itemPost} = item;
-    return (
-      <li key={id} className="list-group-item">
-        <PostListItem {...itemPost}/>
-      </li>
-    )
+    // Сортировка входящих параметров на соответствие объекту
+    if(item !== null && typeof item === 'object' && Object.prototype.toString.call(item) === '[object Object]') {
+      const {id, ...itemPost} = item;
+      return (
+        <li key={id} className="list-group-item">
+          <PostListItem {...itemPost}/>
+        </li>
+      )
+    }
   })
 
   return (
