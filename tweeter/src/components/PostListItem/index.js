@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import "./PostListItem.css"
+import "./PostListItem.sass"
 
 class PostListItem extends Component{
 

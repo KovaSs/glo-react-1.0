@@ -5,7 +5,7 @@ import PostStatusFilter from '../PostStatusFilter'
 import PostList from '../PostList'
 import PostAddForm from '../PostAddForm'
 
-import "./App.css"
+import "./App.sass"
 
 const App = () => {
 

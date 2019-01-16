@@ -1,6 +1,6 @@
 import React from 'react'
 
-import "./PostAddForm.css"
+import "./PostAddForm.sass"
 
 const PostAddForm = () => {
   return (
