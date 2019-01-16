@@ -6,23 +6,11 @@ import "./PostListItem.sass"
 class PostListItem extends Component{
 
   state = {
-    important: false,
-    like: false,
     edit: false,
     postValue: '', 
     modal : false
   }
 
-  onImportant = () => {
-    this.setState(({important}) => ({
-      important : !important
-    }))
-  }
-  onLike = () => {
-    this.setState(({like}) => ({
-      like : !like
-    }))
-  }
   onEdit = () => {
     this.setState(({edit}) => ({
       edit : !edit
@@ -43,8 +31,8 @@ class PostListItem extends Component{
 
   render() {
 
-    const {label, onDelete} = this.props;
-    const {important, like, edit, postValue, modal} = this.state;
+    const {label, onDelete, onToggleImportant, onToggleLiked, important, like} = this.props;
+    const {edit, postValue, modal} = this.state;
     const [day, month] = new Date().toLocaleDateString("ru",{month:"2-digit", day:"numeric"}).split(' ');
 
     let classNames="app-list-item d-flex justify-content-between edit"
@@ -61,7 +49,7 @@ class PostListItem extends Component{
         className={classNames}
       >
         <span 
-          onClick={this.onLike}
+          onClick={onToggleLiked}
           className="app-list-item-label"
         >
           {postValue ? postValue : label}
@@ -74,7 +62,7 @@ class PostListItem extends Component{
           <button 
             type="button"
             className="btn-star btn-sm"
-            onClick={this.onImportant}
+            onClick={onToggleImportant}
           >
             <i className="fa fa-star"></i>
           </button>

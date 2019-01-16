@@ -4,21 +4,20 @@ import PostListItem from '../PostListItem';
 
 import "./PostList.css";
 
-const PostList = ({posts, onDelete}) => {
+const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked}) => {
   
   const elements = posts.map( item => {
-    // Сортировка входящих параметров на соответствие объекту
-    if(item !== null && typeof item === 'object' && Object.prototype.toString.call(item) === '[object Object]') {
-      const {id, ...itemPost} = item;
-      return (
-        <li key={id} className="list-group-item">
-          <PostListItem 
-            {...itemPost}
-            onDelete = {() => onDelete(id)}
-          />
-        </li>
-      )
-    }
+    const {id, ...itemPost} = item;
+    return (
+      <li key={id} className="list-group-item">
+        <PostListItem 
+          {...itemPost}
+          onDelete = {() => onDelete(id)}
+          onToggleImportant = {() => onToggleImportant(id)}
+          onToggleLiked = {() => onToggleLiked(id)}
+        />
+      </li>
+    )
   })
 
   return (
