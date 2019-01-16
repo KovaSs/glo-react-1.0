@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import "./PostListItem.sass"
 
@@ -8,7 +9,8 @@ class PostListItem extends Component{
     important: false,
     like: false,
     edit: false,
-    postValue: ''
+    postValue: '', 
+    modal : false
   }
 
   onImportant = () => {
@@ -31,11 +33,18 @@ class PostListItem extends Component{
       postValue : event.target.value
     })
   }
+  toggleModal = () => {
+    this.setState(({modal}) => {
+      return {
+        modal : !modal
+      }
+    });
+  }
 
   render() {
 
     const {label, onDelete} = this.props;
-    const {important, like, edit, postValue} = this.state;
+    const {important, like, edit, postValue, modal} = this.state;
     const [day, month] = new Date().toLocaleDateString("ru",{month:"2-digit", day:"numeric"}).split(' ');
 
     let classNames="app-list-item d-flex justify-content-between edit"
@@ -72,7 +81,7 @@ class PostListItem extends Component{
           <button 
             type="button"
             className="btn-trash btn-sm"
-            onClick={onDelete}
+            onClick={this.toggleModal}
           >
             <i className="fa fa-trash-o"></i>
           </button>
@@ -87,7 +96,7 @@ class PostListItem extends Component{
         </div>
       </div>
       {
-          edit ? 
+        edit ? 
           <div className="bottom-panel d-flex">
             <input 
               className="form-control new-post-label"
@@ -100,6 +109,21 @@ class PostListItem extends Component{
             className="btn btn-outline-secondary"
             >Сохранить</button>
           </div>
+          : null
+        }
+        { modal ? 
+          <>
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+              <ModalHeader toggle={this.toggle}>Удаление поста</ModalHeader>
+              <ModalBody>
+                Вы уверены что хотите удалить запись?
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={onDelete}>Да</Button>{' '}
+                <Button color="secondary" onClick={this.toggleModal}>Отмена</Button>
+              </ModalFooter>
+            </Modal>
+          </>
           : null
         }
       </>
