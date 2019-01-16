@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from "styled-components";
+// import styled from "styled-components";
 
-// import "./AppHeader.css";
+import "./AppHeader.css";
 
-const Header = styled.div`
+/* const Header = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -14,13 +14,13 @@ const Header = styled.div`
     font-size: 1.2rem;
     color: grey;
   }
-`
+` */
 
 const AppHeader = () => (
-  <Header>
+  <div className = 'app-header d-flex'>
     <h1>Исаев Денис</h1>
     <h2>5 записей, из них понравилось 0</h2>
-  </Header>
+  </div>
 )
 
 export default AppHeader

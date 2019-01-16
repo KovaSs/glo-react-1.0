@@ -34,7 +34,7 @@ class PostListItem extends Component{
 
   render() {
 
-    const {label} = this.props;
+    const {label, onDelete} = this.props;
     const {important, like, edit, postValue} = this.state;
     const [day, month] = new Date().toLocaleDateString("ru",{month:"2-digit", day:"numeric"}).split(' ');
 
@@ -72,6 +72,7 @@ class PostListItem extends Component{
           <button 
             type="button"
             className="btn-trash btn-sm"
+            onClick={onDelete}
           >
             <i className="fa fa-trash-o"></i>
           </button>

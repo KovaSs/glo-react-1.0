@@ -24,6 +24,7 @@
   ],
   "devDependencies": {
     "bootstrap": "^4.2.1",
+    "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
     "reactstrap": "^7.1.0",
     "styled-components": "^4.1.3"

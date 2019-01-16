@@ -5,8 +5,7 @@ const PostStatusFilter = () => {
   return (
     <div className="btn-group">
       <Button color="info">Все</Button>
-      {/* <button type="button" className="btn btn-info">Все</button> */}
-      <button type="button" className="btn btn-outline-secondary">Понравилось</button>
+      <Button type="button" color="outline-secondary">Понравилось</Button>
     </div>
   )
 }

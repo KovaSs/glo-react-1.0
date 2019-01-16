@@ -4,7 +4,7 @@ import PostListItem from '../PostListItem';
 
 import "./PostList.css";
 
-const PostList = ({posts}) => {
+const PostList = ({posts, onDelete}) => {
   
   const elements = posts.map( item => {
     // Сортировка входящих параметров на соответствие объекту
@@ -12,7 +12,10 @@ const PostList = ({posts}) => {
       const {id, ...itemPost} = item;
       return (
         <li key={id} className="list-group-item">
-          <PostListItem {...itemPost}/>
+          <PostListItem 
+            {...itemPost}
+            onDelete = {() => onDelete(id)}
+          />
         </li>
       )
     }
