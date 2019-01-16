@@ -4,6 +4,7 @@ import SearchPanel from '../SearchPanel'
 import PostStatusFilter from '../PostStatusFilter'
 import PostList from '../PostList'
 import PostAddForm from '../PostAddForm'
+import idGenerator from 'react-id-generator';
 
 import "./App.sass"
 let {cloneDeep} = require('lodash')
@@ -26,22 +27,20 @@ class App extends Component {
       {
         label: "Going to learn React",
         important: true,
-        id: 'new-post-1'
+        id: 'post-1'
       },
       {
         label: "That is so good!",
         important: false,
-        id: 'new-post-2'
+        id: 'post-2'
       },
       {
         label: "I need a break...",
         important: false,
-        id: 'new-post-3'
+        id: 'post-3'
       },
     ]
   }
-
-  postId = 4;
 
   deleteItem = id => {
     this.setState( ({data}) => {
@@ -62,7 +61,7 @@ class App extends Component {
     const newPost = {
       label: text,
       important: false,
-      id: `new-post-${this.postId++}`
+      id: `${idGenerator('new-post-')}`
     }
     this.setState(({data}) => {
       const newData = cloneDeep(data);
