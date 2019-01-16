@@ -1,0 +1,27 @@
+{
+  "name": "react1.0",
+  "version": "1.0.0",
+  "description": "React1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx babel src --out-dir dist/src && npx webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KovaSs/React1.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KovaSs/React1.0/issues"
+  },
+  "homepage": "https://github.com/KovaSs/React1.0#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  }
+}
