@@ -6,7 +6,21 @@ import "./header.css"
 
 class Header extends Component {
 
-	getAllCharacters() {
+	state = {
+		content: false
+	}
+
+	showRandChar = () => {
+		const {onShow} = this.props;
+		this.setState(({content}) =>{ 
+			return {
+				content : !this.state.content
+			}
+		})
+		onShow(this.state.content);
+	}
+
+	getCharacters() {
 		return got.getAllCharacters().then(res => console.log(`getAllCharacters ->`, res))
 	} 
 	getAllHouses() {
@@ -25,7 +39,15 @@ class Header extends Component {
 					<li>
 						<Button 
 							color="link"
-							onClick={this.getAllCharacters}
+							onClick={this.showRandChar}
+						>
+							Random Character
+						</Button>
+					</li>
+					<li>
+						<Button 
+							color="link"
+							onClick={this.getCharacters}
 						>
 							Characters
 						</Button>
