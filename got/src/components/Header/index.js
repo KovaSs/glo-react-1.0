@@ -7,13 +7,13 @@ import "./header.css"
 class Header extends Component {
 
 	getAllCharacters() {
-		return got.getAllCharacters().then(res => console.log(res))
+		return got.getAllCharacters().then(res => console.log(`getAllCharacters ->`, res))
 	} 
 	getAllHouses() {
-		return got.getAllHouses().then(res => console.log(res))
+		return got.getAllHouses().then(res => console.log(`getAllHouses ->`, res))
 	} 
 	getAllBooks() {
-		return got.getAllBooks().then(res => console.log(res))
+		return got.getAllBooks().then(res => console.log(`getAllBooks ->`, res))
 	} 
 	render() {
 		return (
