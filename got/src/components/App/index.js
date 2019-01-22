@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../Header';
 import RandomChar from '../RandomChar';
-import ItemList from '../ItemList';
-import CharDetails from '../CharDetails';
+import CharacterPage from '../CharactePage';
+import ErrorMessage from '../ErrorMessage';
 
 
 class App extends Component {
 	state = {
-		randomChar: false
+		randomChar: false,
+		error: false
 	}
 
 	showRandomChar = modal => {
@@ -25,8 +26,19 @@ class App extends Component {
 		}
 	}
 
+	componentDidCatch() {
+		this.setState(({error}) => {
+			return {
+				error : true
+			}
+		})
+	}
+
 	render() {
-		const {randomChar} = this.state
+		const {randomChar, error} = this.state
+		if(error) {
+			return <ErrorMessage/>
+		}
 		return (
 			<> 
 				<Container>
@@ -38,14 +50,7 @@ class App extends Component {
 							{ randomChar ? <RandomChar/> : null}
 						</Col>
 					</Row>
-					<Row>
-						<Col md='6'>
-							<ItemList />
-						</Col>
-						<Col md='6'>
-							<CharDetails />
-						</Col>
-					</Row>
+					<CharacterPage/>
 				</Container>
 			</>
 		);

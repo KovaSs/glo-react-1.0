@@ -40,7 +40,8 @@ class GotService {
 			gender: char.gender,
 			born: char.born,
 			died: char.died,
-			culture: char.culture
+			culture: char.culture,
+			id: char.url.substring(49)
 		}
 	}
 	_transformHouse(house) {
