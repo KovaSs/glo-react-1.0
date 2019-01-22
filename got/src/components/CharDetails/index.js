@@ -85,23 +85,23 @@ class CharDetails extends Component {
 					<Spinner/>
 					:
 					<>
-						<h4>{name}</h4>
+						<h4>{name || "No data:("}</h4>
 						<ul className="list-group list-group-flush">
 							<li className="list-group-item d-flex justify-content-between">
 								<span className="term">Gender</span>
-								<span>{gender}</span>
+								<span>{gender || "No data:("}</span>
 							</li>
 							<li className="list-group-item d-flex justify-content-between">
 								<span className="term">Born</span>
-								<span>{born}</span>
+								<span>{born || "No data:("}</span>
 							</li>
 							<li className="list-group-item d-flex justify-content-between">
 								<span className="term">Died</span>
-								<span>{died}</span>
+								<span>{died || "No data:("}</span>
 							</li>
 							<li className="list-group-item d-flex justify-content-between">
 								<span className="term">Culture</span>
-								<span>{culture}</span>
+								<span>{culture || "No data:("}</span>
 							</li>
 						</ul>
 					</>
