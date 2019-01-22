@@ -54,23 +54,23 @@ export default class RandomChar extends Component {
 					error ?	<ErrorMessage/> : <Spinner/>
 					:
 					<div>
-						<h4>Random Character: {name || "No data:("}</h4>
+						<h4>Random Character: {name || "¯\\_(ツ)_/¯"}</h4>
 						<ul className="list-group list-group-flush">
 							<li className="list-group-item d-flex justify-content-between">
 								<span className="term">Gender </span>
-								<span>{gender || "No data:("}</span>
+								<span>{gender || "¯\\_(ツ)_/¯"}</span>
 							</li>
 							<li className="list-group-item d-flex justify-content-between">
 								<span className="term">Born </span>
-								<span>{born || "No data:("}</span>
+								<span>{born || "¯\\_(ツ)_/¯"}</span>
 							</li>
 							<li className="list-group-item d-flex justify-content-between">
 								<span className="term">Died </span>
-								<span>{died || "No data:("}</span>
+								<span>{died || "¯\\_(ツ)_/¯"}</span>
 							</li>
 							<li className="list-group-item d-flex justify-content-between">
 								<span className="term">Culture </span>
-								<span>{culture || "No data:("}</span>
+								<span>{culture || "¯\\_(ツ)_/¯"}</span>
 							</li>
 						</ul>
 					</div>
