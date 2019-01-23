@@ -3,7 +3,7 @@ class GotService {
 		this._apiBase = 'https://www.anapioficeandfire.com/api'
 	}
 
-	async getResource(url) {
+	getResource = async (url) => {
 		const res = await fetch(`${this._apiBase}${url}`);
 		if (!res.ok) {
 			throw new Error(`Could not fetch ${url}` + 
@@ -12,29 +12,29 @@ class GotService {
 		return await res.json();
 	}
 
-	async getAllCharacters() {
+	getAllCharacters = async () => {
 		const res = await this.getResource(`/characters?page=5&pageSize=10`);
 		return res.map(this._transformCharacter)
 	}
 
-	async getCharacter(id) {
+	getCharacter = async (id) => {
 		const res = await this.getResource(`/characters/${id}`);
 		return this._transformCharacter(res);
 	}
 
-	getAllBooks() {
+	getAllBooks = () => {
 		return this.getResource(`/books?page=1&pageSize=100`);
 	}
-	getBook(id) {
+	getBook = (id) => {
 		return this.getResource(`/books/${id}`);
 	}
-	getAllHouses() {
+	getAllHouses = () => {
 		return this.getResource(`/houses?page=1&pageSize=100`);
 	}
-	getHouse(id) {
+	getHouse = (id) => {
 		return this.getResource(`/houses/${id}`);
 	}
-	_transformCharacter(char) {
+	_transformCharacter = (char) => {
 		return {
 			name: char.name,
 			gender: char.gender,
@@ -44,7 +44,7 @@ class GotService {
 			id: char.url.substring(49)
 		}
 	}
-	_transformHouse(house) {
+	_transformHouse = (house) => {
 		return {
 			name: house.name,
 			region: house.region,
@@ -54,7 +54,7 @@ class GotService {
 			ancestralWeapons: house.ancestralWeapons
 		}
 	}
-	_transformHBook(book) {
+	_transformHBook = (book) => {
 		return {
 			name: book.name,
 			numberofPages: book.numberOfPages,

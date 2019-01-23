@@ -3,22 +3,20 @@ import Spinner from '../Spinner';
 import ErrorMessage from '../ErrorMessage';
 import './itemList.css';
 
-import GotService from "../../services/service"
-
 export default class ItemList extends Component {
 
-	gotService = new GotService();
-
 	state = {
-		charList: null,
+		itemList: null,
 		error: false
 	}
 
 	componentDidMount() {
-		this.gotService.getAllCharacters()
-			.then((charList) => {
+		const {getData} = this.props;
+
+		getData()
+			.then((itemList) => {
 				this.setState({
-					charList
+					itemList
 				})
 			})
 	}
@@ -34,13 +32,15 @@ export default class ItemList extends Component {
 	renderItems = arr => {
 		const {onCharSelected} = this.props;
 		return arr.map(item => {
+			const {id} = item;
+			const label = this.props.renderItem(item);
 			return (
 				<li 
-					key = {item.id}
+					key = {id}
 					className = "list-group-item"
-					onClick = {() => onCharSelected(item.id)}
+					onClick = {() => onCharSelected(id)}
 				>
-					{item.name}
+					{label}
 				</li>
 			)
 		})
@@ -48,14 +48,13 @@ export default class ItemList extends Component {
 
 	render() {
 
-		const {charList, error} = this.state
+		const {itemList, error} = this.state
 
-		
 		if(error) {
 			return <ErrorMessage/>
 		}
 
-		const items = charList ? this.renderItems(charList) : <li className = "list-group-item"><Spinner/></li>;
+		const items = itemList ? this.renderItems(itemList) : <li className = "list-group-item"><Spinner/></li>;
 
 		return (
 			<ul className="item-list list-group">

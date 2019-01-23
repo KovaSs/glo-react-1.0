@@ -4,7 +4,11 @@ import ItemList from '../ItemList';
 import CharDetails from '../CharDetails';
 import ErrorMessage from '../ErrorMessage';
 
+import GotService from "../../services/service"
+
 class CharacterPage extends Component {
+
+  gotService = new GotService();
 
   state = {
     selectedChar: null, 
@@ -38,6 +42,8 @@ class CharacterPage extends Component {
         <Col md='6'>
           <ItemList 
             onCharSelected={this.onCharSelected}
+            getData={this.gotService.getAllCharacters}
+            renderItem={(item) => item.name}
           />
         </Col>
         <Col md='6'>
