@@ -45,6 +45,7 @@ class GotService {
 			born: char.born,
 			died: char.died,
 			culture: char.culture,
+			url: char.url,
 			id: char.url.substring(49)
 		}
 	}
@@ -55,15 +56,18 @@ class GotService {
 			words: house.words,
 			titles: house.titles,
 			overlord: house.overlord,
-			ancestralWeapons: house.ancestralWeapons
+			ancestralWeapons: house.ancestralWeapons,
+			id: house.overlord.substring(45)
 		}
 	}
+
 	_transformHBook = (book) => {
 		return {
 			name: book.name,
 			numberofPages: book.numberOfPages,
 			publiser: book.publiser,
-			released: book.realised
+			released: book.realised,
+			id: book.url.substring(44)
 		}
 	}
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Spinner from '../Spinner';
 import ErrorMessage from '../ErrorMessage';
+import idGenerator from 'react-id-generator';
 import './itemList.css';
 
 export default class ItemList extends Component {
@@ -30,15 +31,15 @@ export default class ItemList extends Component {
 	}
 
 	renderItems = arr => {
-		// const {onCharSelected} = this.props;
+		const {onCharSelected, renderItem} = this.props;
 		return arr.map(item => {
 			const {id} = item;
-			const label = this.props.renderItem(item);
+			const label = renderItem(item);
 			return (
 				<li 
-					key = {id}
+					key = {`${idGenerator('list-')}`}
 					className = "list-group-item"
-					onClick = {() => this.props.onCharSelected(id)}
+					onClick = {() => onCharSelected(id)}
 				>
 					{label}
 				</li>
