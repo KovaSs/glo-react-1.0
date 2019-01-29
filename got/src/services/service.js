@@ -24,7 +24,7 @@ class GotService {
 
 	getAllBooks = async () => {
 		const res = await this.getResource(`/books/`);
-		return this._transformHBook(res);
+		return res.map(this._transformHBook)
 	}
 	getBook = async (id) => {
 		const book = await this.getResource(`/books/${id}`);
@@ -32,7 +32,7 @@ class GotService {
 	}
 	getAllHouses = async () => {
 		const res = await this.getResource(`/houses/`);
-		return this._transformHouse(res)
+		return res.map(this._transformHouse)
 	}
 	getHouse = async (id) => {
 		const house = await this.getResource(`/houses/${id}`);

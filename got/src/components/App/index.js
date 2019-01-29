@@ -4,8 +4,8 @@ import Header from '../Header';
 import RandomChar from '../RandomChar';
 import CharacterPage from '../CharactePage';
 import ErrorMessage from '../ErrorMessage';
-// import ItemList from '../ItemList';
-// import CharDetails from '../CharDetails';
+import ItemList from '../ItemList';
+import CharDetails from '../CharDetails';
 
 import GotService from "../../services/service"
 
@@ -57,31 +57,36 @@ class App extends Component {
 						</Col>
 					</Row>
 					<CharacterPage/>
-					{/* <Row>
-						<Col md='6'>
-							<ItemList 
-								onCharSelected={this.onCharSelected}
-								getData={this.gotService.getAllBooks}
-							/>
-						</Col>
-						<Col md='6'>
-							<CharDetails 
-								charId={selectedChar}
-							/>
-						</Col>
-					</Row>
+
 					<Row>
 						<Col md='6'>
 							<ItemList 
 								onCharSelected={this.onCharSelected}
+								getData={this.gotService.getAllBooks}
+								renderItem={(item) => item.name}
 							/>
 						</Col>
 						<Col md='6'>
 							<CharDetails 
-								charId={selectedChar}
+								charId={this.state.selectedChar}
 							/>
 						</Col>
-					</Row> */}
+					</Row>
+
+					<Row>
+						<Col md='6'>
+							<ItemList 
+								onCharSelected={this.onCharSelected}
+								getData={this.gotService.getAllHouses}
+								renderItem={(item) => item.name}
+							/>
+						</Col>
+						<Col md='6'>
+							<CharDetails 
+								charId={this.state.selectedChar}
+							/>
+						</Col>
+					</Row>
 				</Container>
 			</>
 		);
