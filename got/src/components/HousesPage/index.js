@@ -7,7 +7,7 @@ import {Field} from '../CharDetails';
 
 import GotService from "../../services/service"
 
-class CharacterPage extends Component {
+class HousesPage extends Component {
 
   gotService = new GotService();
 
@@ -41,17 +41,16 @@ class CharacterPage extends Component {
     const itemList = (
       <ItemList 
         onItemSelected={this.onItemSelected}
-        getData={this.gotService.getAllCharacters}
+        getData={this.gotService.getAllHouses}
         renderItem={item => item.name}
       />
     )
 
     const charDetails = (
-      <CharDetails charId={selectedChar} infoMess={'character'}>
-        <Field field='gender' label='Gender'/>
-        <Field field='born' label='Born'/>
-        <Field field='died' label='Died'/>
-        <Field field='culture' label='Culture'/>
+      <CharDetails charId={selectedChar} infoMess={'house'}>
+        <Field field='name' label='Name'/>
+        <Field field='region' label='Region'/>
+        <Field field='overlord' label='Region'/>
       </CharDetails>
     )
 
@@ -61,4 +60,4 @@ class CharacterPage extends Component {
   }
 }
 
-export default CharacterPage
+export default HousesPage

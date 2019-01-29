@@ -57,7 +57,8 @@ class CharDetails extends Component {
 
 	render() {
 
-		const {char, error, loading} = this.state
+		const {char, error, loading} = this.state;
+		const {infoMess} = this.props;
 
 		if(error) {
 			return <ErrorMessage/>
@@ -68,7 +69,7 @@ class CharDetails extends Component {
 				<span className="list-group-item">
 					<ClickInfo/>
 					<div className="text-error">
-						← Please select a character
+						{`← Please select a ${infoMess}`}
 					</div>
 				</span>	
 			)
