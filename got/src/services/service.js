@@ -22,17 +22,21 @@ class GotService {
 		return this._transformCharacter(res);
 	}
 
-	getAllBooks = () => {
-		return this.getResource(`/books?page=1&pageSize=100`);
+	getAllBooks = async () => {
+		const res = await this.getResource(`/books/`);
+		return this._transformHBook(res);
 	}
-	getBook = (id) => {
-		return this.getResource(`/books/${id}`);
+	getBook = async (id) => {
+		const book = await this.getResource(`/books/${id}`);
+		return this._transformHBook(book);
 	}
-	getAllHouses = () => {
-		return this.getResource(`/houses?page=1&pageSize=100`);
+	getAllHouses = async () => {
+		const res = await this.getResource(`/houses/`);
+		return this._transformHouse(res)
 	}
-	getHouse = (id) => {
-		return this.getResource(`/houses/${id}`);
+	getHouse = async (id) => {
+		const house = await this.getResource(`/houses/${id}`);
+		return this._transformHouse(house)
 	}
 	_transformCharacter = (char) => {
 		return {
