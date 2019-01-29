@@ -31,7 +31,7 @@ export default class ItemList extends Component {
 	}
 
 	renderItems = arr => {
-		const {onCharSelected, renderItem} = this.props;
+		const {onItemSelected, renderItem} = this.props;
 		return arr.map(item => {
 			const {id} = item;
 			const label = renderItem(item);
@@ -39,7 +39,7 @@ export default class ItemList extends Component {
 				<li 
 					key = {`${idGenerator('list-')}`}
 					className = "list-group-item"
-					onClick = {() => onCharSelected(id)}
+					onClick = {() => onItemSelected(id)}
 				>
 					{label}
 				</li>

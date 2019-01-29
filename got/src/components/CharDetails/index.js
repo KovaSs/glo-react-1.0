@@ -7,7 +7,6 @@ import './charDetails.css';
 import GotService from "../../services/service"
 
 class CharDetails extends Component {
-
 	gotService = new GotService();
 
 	state = {
@@ -58,7 +57,7 @@ class CharDetails extends Component {
 
 	render() {
 
-		const {char, error} = this.state
+		const {char, error, loading} = this.state
 
 		if(error) {
 			return <ErrorMessage/>
@@ -75,8 +74,7 @@ class CharDetails extends Component {
 			)
 		}
 
-		const {loading} = this.state;
-		const {name, gender, born, died, culture} = char;
+		const {name} = char;
 
 		return (
 			<div className="char-details rounded">
@@ -87,28 +85,26 @@ class CharDetails extends Component {
 					<>
 						<h4>{name || "¯\\_(ツ)_/¯"}</h4>
 						<ul className="list-group list-group-flush">
-							<li className="list-group-item d-flex justify-content-between">
-								<span className="term">Gender</span>
-								<span>{gender || "¯\\_(ツ)_/¯"}</span>
-							</li>
-							<li className="list-group-item d-flex justify-content-between">
-								<span className="term">Born</span>
-								<span>{born || "¯\\_(ツ)_/¯"}</span>
-							</li>
-							<li className="list-group-item d-flex justify-content-between">
-								<span className="term">Died</span>
-								<span>{died || "¯\\_(ツ)_/¯"}</span>
-							</li>
-							<li className="list-group-item d-flex justify-content-between">
-								<span className="term">Culture</span>
-								<span>{culture || "¯\\_(ツ)_/¯"}</span>
-							</li>
+						{
+							React.Children.map(this.props.children, child => {
+								return React.cloneElement(child, {char})
+							})
+						}
 						</ul>
 					</>
 				}
 			</div>
 		);
 	}
+}
+
+export const Field = ({char, field, label}) => {
+	return(
+		<li className="list-group-item d-flex justify-content-between">
+			<span className="term">{label}</span>
+			<span>{char[field] || "¯\\_(ツ)_/¯"}</span>
+		</li>
+	)
 }
 
 export default CharDetails
