@@ -46,9 +46,9 @@ class BooksPage extends Component {
     )
 
     const charDetails = (
-      <ItemDetails charId={selectedBook} infoMess={'book'}>
+      <ItemDetails itemId={selectedBook} infoMess={'book'} getData={this.gotService.getBook}>
         <Field field='numberofPages' label='Number of Pages'/>
-        <Field field='publiser' label='Publiser'/>
+        <Field field='publisher' label='Publiser'/>
         <Field field='released' label='Released'/>
       </ItemDetails>
     )

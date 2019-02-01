@@ -46,10 +46,10 @@ class HousesPage extends Component {
     )
 
     const charDetails = (
-      <ItemDetails charId={selectedChar} infoMess={'house'}>
+      <ItemDetails itemId={selectedChar} infoMess={'house'} getData={this.gotService.getHouse}>
         <Field field='name' label='Name'/>
         <Field field='region' label='Region'/>
-        <Field field='overlord' label='Region'/>
+        <Field field='coatOfArms' label='Coat Of Arms'/>
       </ItemDetails>
     )
 

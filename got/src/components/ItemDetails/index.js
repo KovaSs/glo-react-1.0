@@ -10,42 +10,55 @@ class ItemDetails extends Component {
 	gotService = new GotService();
 
 	state = {
-		char: null, 
+		item: null, 
 		loading: false,
-		error: false
+		error: false,
+		errorNumber: null
 	}
 
 	componentDidMount() {
-		this.updateChar()
+		// this.updateChar()
+		const {itemId, getData} = this.props;
+
+		if(!itemId) return;
+		this.setState({ loading: true })
+
+		getData(itemId)
+			.then(this.updateItem)
+			.catch(err => {    
+				this.onError(Number(err.message.replace(/\D+/, '')));
+			})
 	}
 
 	componentDidUpdate(prevProps) {
-		const {charId} = this.props
-		if(charId !== prevProps.charId){
-			this.updateChar()
-		}
+		const {itemId, getData} = this.props;
+        
+		if(itemId !== prevProps.itemId) {
+			if(!itemId) return;
+			this.setState({ loading: true })
 
-	}
-
-	updateChar = () => {
-		const {charId} = this.props;
-
-		if(!charId) {
-			return
-		}
-	
-		this.setState({ loading : true})
-
-		this.gotService.getCharacter(charId)
-			.then(char => {
-				this.setState({
-					char,
-					loading: false
+			getData(itemId)
+				.then(this.updateItem)
+				.catch(err => {    
+					this.onError(Number(err.message.replace(/\D+/, '')));
 				})
-			})
-			// Add Error for checking
-			// this.foo.bar = 0;
+		}
 	}
+
+	updateItem = item => {
+		this.setState({
+				item,
+				loading: false
+		})
+}
+
+	onError = (err) => {
+		this.setState({
+			error: true,
+			loading: false,
+			errorNumber: err
+		})
+}
 
 	componentDidCatch() {
 		this.setState(({error}) => {
@@ -57,14 +70,14 @@ class ItemDetails extends Component {
 
 	render() {
 
-		const {char, error, loading} = this.state;
+		const {item, error, loading} = this.state;
 		const {infoMess} = this.props;
 
 		if(error) {
 			return <ErrorMessage/>
 		}
 
-		if(!char) {
+		if(!item) {
 			return (
 				<span className="list-group-item">
 					<ClickInfo/>
@@ -75,7 +88,7 @@ class ItemDetails extends Component {
 			)
 		}
 
-		const {name} = char;
+		const {name} = item;
 
 		return (
 			<div className="char-details rounded">
@@ -88,7 +101,7 @@ class ItemDetails extends Component {
 						<ul className="list-group list-group-flush">
 						{
 							React.Children.map(this.props.children, child => {
-								return React.cloneElement(child, {char})
+								return React.cloneElement(child, {item})
 							})
 						}
 						</ul>
@@ -99,11 +112,11 @@ class ItemDetails extends Component {
 	}
 }
 
-export const Field = ({char, field, label}) => {
+export const Field = ({item, field, label}) => {
 	return(
 		<li className="list-group-item d-flex justify-content-between">
 			<span className="term">{label}</span>
-			<span>{char[field] || "¯\\_(ツ)_/¯"}</span>
+			<span>{item[field] || "¯\\_(ツ)_/¯"}</span>
 		</li>
 	)
 }

@@ -56,7 +56,7 @@ class GotService {
 			words: house.words,
 			titles: house.titles,
 			overlord: house.overlord,
-			ancestralWeapons: house.ancestralWeapons,
+			coatOfArms: house.coatOfArms,
 			id: house.overlord.replace(/\D+/, '')
 		}
 	}
@@ -65,8 +65,8 @@ class GotService {
 		return {
 			name: book.name,
 			numberofPages: book.numberOfPages,
-			publiser: book.publiser,
-			released: book.realised,
+			publisher: book.publisher,
+			released: book.released,
 			id: book.url.replace(/\D+/, '')
 		}
 	}

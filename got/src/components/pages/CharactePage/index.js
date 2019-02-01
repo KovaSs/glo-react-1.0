@@ -46,7 +46,7 @@ class CharacterPage extends Component {
     )
 
     const charDetails = (
-      <ItemDetails charId={selectedChar} infoMess={'character'}>
+      <ItemDetails itemId={selectedChar} infoMess={'character'} getData={this.gotService.getCharacter}>
         <Field field='gender' label='Gender'/>
         <Field field='born' label='Born'/>
         <Field field='died' label='Died'/>
