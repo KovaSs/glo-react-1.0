@@ -60,7 +60,11 @@ class App extends Component {
 					<Route path='/character' component={CharacterPage}/>
 					<Route path='/houses' component={HousesPage}/>
 					<Route path='/books' exact component={BooksPage}/>
-					<Route path='/books/:id' render={() => <BooksItem/>}/>
+					<Route path='/books/:id' render={({match}) => {
+						console.log(match)
+						const {id} = match.params;
+						return <BooksItem bookId={id}/>
+					}}/>
 				</Container>
 			</div>
 			</Router>

@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import ItemList from '../../ItemList';
-import ItemDetails, {Field} from '../../ItemDetails';
 import ErrorMessage from '../../ErrorMessage';
+import {withRouter} from 'react-router-dom';
 import RowBlock from '../../RowBlock';
 
 import GotService from "../../../services/service"
+import "./booksPage.css"
 
 class BooksPage extends Component {
 
   gotService = new GotService();
 
   state = {
-    selectedBook: null, 
     error: false
   }
 
@@ -23,15 +23,8 @@ class BooksPage extends Component {
 		})
 	}
 
-  onItemSelected = id => {
-		this.setState({
-			selectedBook: id
-		})
-	}
-
   render() {
-
-    const {selectedBook, error} = this.state;
+    const {error} = this.state;
 
     if(error) {
 			return <ErrorMessage/>
@@ -39,18 +32,16 @@ class BooksPage extends Component {
     
     const itemList = (
       <ItemList 
-        onItemSelected={this.onItemSelected}
+        onItemSelected={itemId => this.props.history.push(itemId)}
         getData={this.gotService.getAllBooks}
-        renderItem={({name}) => `${name} `}
+        renderItem={({name}) => `${name}`}
       />
     )
 
     const charDetails = (
-      <ItemDetails itemId={selectedBook} infoMess={'book'} getData={this.gotService.getBook}>
-        <Field field='numberofPages' label='Number of Pages'/>
-        <Field field='publisher' label='Publiser'/>
-        <Field field='released' label='Released'/>
-      </ItemDetails>
+      <div className='img_container'>
+        <img className='heartBeat img_size' src={process.env.PUBLIC_URL + '/img/loader-512x512.png'} alt="error"/> 
+      </div>
     )
 
     return (
@@ -59,4 +50,4 @@ class BooksPage extends Component {
   }
 }
 
-export default BooksPage
+export default withRouter(BooksPage);

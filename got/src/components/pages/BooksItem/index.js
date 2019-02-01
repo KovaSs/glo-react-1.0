@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Container} from 'reactstrap';
 import ItemDetails, {Field} from '../../ItemDetails';
 import GotService from "../../../services/service"
 
@@ -11,15 +10,13 @@ export class BooksItem extends Component {
   }
 
   render() {
-    const {selectedBook} = this.state;
+    const {bookId} = this.props;
     return (
-      <Container>
-        <ItemDetails charId={selectedBook} infoMess={'book'}>
-          <Field field='numberofPages' label='Number of Pages'/>
-          <Field field='publiser' label='Publiser'/>
-          <Field field='released' label='Released'/>
-        </ItemDetails>
-      </Container>
+      <ItemDetails itemId={bookId} infoMess={'book'} getData={this.gotService.getBook}>
+        <Field field='numberofPages' label='Number of Pages'/>
+        <Field field='publiser' label='Publiser'/>
+        <Field field='released' label='Released'/>
+      </ItemDetails>
     )
   }
 }

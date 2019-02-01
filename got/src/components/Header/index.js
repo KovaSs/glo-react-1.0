@@ -47,7 +47,7 @@ class Header extends Component {
 							Random Character
 						</Button>
 					</li>
-					<Link to='/character'>
+					<Link to='/character/'>
 						<Button 
 							color="link"
 							onClick={this.getCharacters}
@@ -55,7 +55,7 @@ class Header extends Component {
 							Characters
 						</Button>
 					</Link>
-					<Link to='/houses'>
+					<Link to='/houses/'>
 						<Button 
 							color="link"
 							onClick={this.getAllHouses}
@@ -63,7 +63,7 @@ class Header extends Component {
 							Houses
 						</Button>
 					</Link>
-					<Link to='/books'>
+					<Link to='/books/'>
 						<Button 
 							color="link"
 							onClick={this.getAllBooks}
