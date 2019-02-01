@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import Spinner from '../Spinner';
 import ClickInfo from '../ClickInfo';
 import ErrorMessage from '../ErrorMessage';
-import './charDetails.css';
+import './itemDetails.css';
 
 import GotService from "../../services/service"
 
-class CharDetails extends Component {
+class ItemDetails extends Component {
 	gotService = new GotService();
 
 	state = {
@@ -108,4 +108,4 @@ export const Field = ({char, field, label}) => {
 	)
 }
 
-export default CharDetails
+export default ItemDetails

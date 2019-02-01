@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../Header';
 import RandomChar from '../RandomChar';
-import CharacterPage from '../CharactePage';
-import BooksPage from '../BooksPage';
-import HousesPage from '../HousesPage';
+import {CharacterPage, BooksPage, HousesPage, BooksItem} from '../pages';
 import ErrorMessage from '../ErrorMessage';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import GotService from "../../services/service"
 
@@ -46,7 +45,8 @@ class App extends Component {
 			return <ErrorMessage/>
 		}
 		return (
-			<> 
+			<Router>
+				<div className="app"> 
 				<Container>
 					<Header onShow={this.showRandomChar}/>
 				</Container>
@@ -56,11 +56,14 @@ class App extends Component {
 							{ randomChar ? <RandomChar/> : null}
 						</Col>
 					</Row>
-					<CharacterPage/>
-					<BooksPage/>
-					<HousesPage/>
+					<Route path='/' exact component={() => <h1>Welcome GoT</h1>}/>
+					<Route path='/character' component={CharacterPage}/>
+					<Route path='/houses' component={HousesPage}/>
+					<Route path='/books' exact component={BooksPage}/>
+					<Route path='/books/:id' render={() => <BooksItem/>}/>
 				</Container>
-			</>
+			</div>
+			</Router>
 		);
 	}
 };

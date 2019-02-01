@@ -46,7 +46,7 @@ class GotService {
 			died: char.died,
 			culture: char.culture,
 			url: char.url,
-			id: char.url.substring(49)
+			id: char.url.replace(/\D+/, '')
 		}
 	}
 	_transformHouse = (house) => {
@@ -57,7 +57,7 @@ class GotService {
 			titles: house.titles,
 			overlord: house.overlord,
 			ancestralWeapons: house.ancestralWeapons,
-			id: house.overlord.substring(45)
+			id: house.overlord.replace(/\D+/, '')
 		}
 	}
 
@@ -67,7 +67,7 @@ class GotService {
 			numberofPages: book.numberOfPages,
 			publiser: book.publiser,
 			released: book.realised,
-			id: book.url.substring(44)
+			id: book.url.replace(/\D+/, '')
 		}
 	}
 }

@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
-import ItemList from '../ItemList';
-import CharDetails from '../CharDetails';
-import ErrorMessage from '../ErrorMessage';
-import RowBlock from '../RowBlock';
-import {Field} from '../CharDetails';
+import ItemList from '../../ItemList';
+import ItemDetails, {Field} from '../../ItemDetails';
+import ErrorMessage from '../../ErrorMessage';
+import RowBlock from '../../RowBlock';
 
-import GotService from "../../services/service"
+import GotService from "../../../services/service"
 
-class HousesPage extends Component {
+class CharacterPage extends Component {
 
   gotService = new GotService();
 
@@ -41,17 +40,18 @@ class HousesPage extends Component {
     const itemList = (
       <ItemList 
         onItemSelected={this.onItemSelected}
-        getData={this.gotService.getAllHouses}
+        getData={this.gotService.getAllCharacters}
         renderItem={item => item.name}
       />
     )
 
     const charDetails = (
-      <CharDetails charId={selectedChar} infoMess={'house'}>
-        <Field field='name' label='Name'/>
-        <Field field='region' label='Region'/>
-        <Field field='overlord' label='Region'/>
-      </CharDetails>
+      <ItemDetails charId={selectedChar} infoMess={'character'}>
+        <Field field='gender' label='Gender'/>
+        <Field field='born' label='Born'/>
+        <Field field='died' label='Died'/>
+        <Field field='culture' label='Culture'/>
+      </ItemDetails>
     )
 
     return (
@@ -60,4 +60,4 @@ class HousesPage extends Component {
   }
 }
 
-export default HousesPage
+export default CharacterPage

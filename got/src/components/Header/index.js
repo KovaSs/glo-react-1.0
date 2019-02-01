@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Button } from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 import {got} from "../../services/service"
 import "./header.css"
@@ -32,9 +33,11 @@ class Header extends Component {
 	render() {
 		return (
 			<div className="header-block">
+			<Link to='/'>
 				<h3 className="header-title">
 					<Button color="link">Game of Thrones DB</Button>
 				</h3>
+			</Link>
 				<ul className="header-links">
 					<li>
 						<Button 
@@ -44,30 +47,30 @@ class Header extends Component {
 							Random Character
 						</Button>
 					</li>
-					<li>
+					<Link to='/character'>
 						<Button 
 							color="link"
 							onClick={this.getCharacters}
 						>
 							Characters
 						</Button>
-					</li>
-					<li>
+					</Link>
+					<Link to='/houses'>
 						<Button 
 							color="link"
 							onClick={this.getAllHouses}
 						>
 							Houses
 						</Button>
-					</li>
-					<li>
+					</Link>
+					<Link to='/books'>
 						<Button 
 							color="link"
 							onClick={this.getAllBooks}
 						>
 							Books
 						</Button>
-					</li>
+					</Link>
 				</ul>
 			</div>
 		);
