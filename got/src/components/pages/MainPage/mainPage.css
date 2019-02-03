@@ -1,0 +1,16 @@
+.img_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.img_size{
+  width: 45%;
+}
+
+.text_container {
+  text-align: center;
+  color: #fff ;
+  font-size: 22px;
+}
