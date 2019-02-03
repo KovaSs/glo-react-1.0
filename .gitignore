@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /tweeter
+/redux-app
 
 # dependencies
 /node_modules
