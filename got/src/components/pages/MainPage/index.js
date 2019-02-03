@@ -8,17 +8,14 @@ const MainPage = () => {
     <Container>
       <Row>
         <Col className='img_container'>
-          <img className='heartBeat img_size' src={process.env.PUBLIC_URL + '/img/loader-512x512.png'} alt="main_img "/> 
+          <img className='heartBeat img_size' src={process.env.PUBLIC_URL + '/img/loader-512x512.png'} alt="main_img "/>
         </Col>
       </Row>
       <Row>
-        <Col>
-          <div className="text_container">
-            All the data from the universe of Ice And Fire you've ever wanted!
-          </div>
+        <Col className="text_container">
+          All the data from the universe of Ice And Fire you've ever wanted!
         </Col>
       </Row>
-
     </Container>
   )
 }

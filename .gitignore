@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /tweeter
+/got
 
 # dependencies
 /node_modules
