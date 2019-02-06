@@ -24,8 +24,11 @@
   ],
   "devDependencies": {
     "bootstrap": "^4.2.1",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "react-id-generator": "^0.1.6",
     "react-router-dom": "^4.3.1",
+    "react-test-renderer": "^16.8.0",
     "reactstrap": "^7.1.0"
   }
 }
