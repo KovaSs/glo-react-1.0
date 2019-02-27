@@ -1,0 +1,39 @@
+.header-block {
+  display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 80px;
+}
+
+.header-title .btn-link {
+  font-size: 24px !important;
+	color: #fff !important;
+	margin: 0 !important;
+}
+.header-title .btn-link:active {
+  -moz-transform: translatey(3px); /* Для Firefox */ 
+  -ms-transform: translatey(3px); /* Для IE */ 
+  -webkit-transform: translatey(3px); /* Для Safari, Chrome, iOS */ 
+  -o-transform:translatey(3px); /* Для Opera */ 
+  transform: translatey(3px)
+}
+
+.header-links {
+  display: flex;
+	margin: 0;
+	align-items: center;
+  list-style-type: none;
+}
+
+.btn-link {
+  color: #fff !important;
+  font-size: 18px !important;
+  text-decoration: none !important;
+}
+.btn-link:active {
+  -moz-transform: translatey(3px); /* Для Firefox */ 
+  -ms-transform: translatey(3px); /* Для IE */ 
+  -webkit-transform: translatey(3px); /* Для Safari, Chrome, iOS */ 
+  -o-transform:translatey(3px); /* Для Opera */ 
+  transform: translatey(3px)
+}
